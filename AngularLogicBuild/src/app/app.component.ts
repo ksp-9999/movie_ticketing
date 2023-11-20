@@ -43,4 +43,10 @@ export class AppComponent {
       image:'../assets/jigarthanda.jpeg'
     }
   ]
+  selectedObj:any[]=[]
+  selectedObjShow:any[]=[]
+
+  selectedMovie(movie:any){
+    this.selectedObjShow=movie.shows
+  }
 }

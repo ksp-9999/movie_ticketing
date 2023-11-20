@@ -16,7 +16,7 @@
         <div class="row mt-3">
           <div class="col-sm-3" *ngFor="let movie of movieList" style="width: 20em;" (click)="selectedMovie(movie)">
             <div class="card mt-4" style="height: auto;" title="{{movie.description}}">
-              <div class="card-header text-center bg-secondary text-light">
+              <div class="card-header text-center bg-secondary text-light" [ngClass]="movie.movieName==selectedObj?.['movieName']?'bg-success':''" >
                 <strong>{{movie.movieName}}</strong>
               </div>
               <img [src]='movie.image' alt="Image here" style="width: 100%;height: 15em;" class="img-thumbnail img-fluid "  >
@@ -36,8 +36,17 @@
           <div class="col-6">
             <h2>Shows</h2>
             <span *ngFor="let show of selectedObjShow">
-              <button class="btn btn-secondary btn-lg mx-3">{{show}}</button>
+              <button class="btn btn-secondary btn-lg mx-3" #showbt (click)="showbtn(showbt)">{{show}}</button>
             </span>
+            <div class="input-group mt-3 ">
+              <input type="text" class="form-control" [(ngModel)]="ticketcount" (change)="getPrice()" placeholder="Enter Ticket count">
+              <div class="input-group-text">Book Tickets</div>
+            </div>
+          </div>
+          <div>
+            <h4>Tickets</h4>
+            <p>Ticket Price</p>
+            <p>Cost of {{ticketcount}}:{{price | currency:'INR'}}</p>
           </div>
         </div>
       </div>

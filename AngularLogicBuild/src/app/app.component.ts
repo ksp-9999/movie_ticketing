@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   movieList:any[]=[
     {
-      movieName:'Mangalavaaram',
+      movieName:'mangalavaram',
       ticketRate:'120',
       description:'Fear engulfs a village as mysterious murders pile up and Shailu, a young woman, finds herself at the center of it.',
       shows:['11:00','2:00','6:00','9:30'],
@@ -43,10 +43,25 @@ export class AppComponent {
       image:'../assets/jigarthanda.jpeg'
     }
   ]
-  selectedObj:any[]=[]
+  selectedObj:any
   selectedObjShow:any[]=[]
+  ticketcount:number=0
+  price=0
+  
+  getPrice(){
+    if(this.ticketcount!=0&&this.selectedObj.ticketRate!=0){
+    this.price=this.ticketcount*this.selectedObj.ticketRate
+    }
+  }
 
   selectedMovie(movie:any){
     this.selectedObjShow=movie.shows
+    this.selectedObj=movie
+  }
+
+  showbtn(showbtn:any){
+console.log(showbtn.style.backgroundColor='darkgreen');
+
+
   }
 }
